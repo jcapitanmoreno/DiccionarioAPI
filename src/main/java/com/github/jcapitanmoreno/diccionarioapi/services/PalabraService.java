@@ -1,6 +1,7 @@
 package com.github.jcapitanmoreno.diccionarioapi.services;
 
 import com.github.jcapitanmoreno.diccionarioapi.exceptions.RecordNotFoundException;
+import com.github.jcapitanmoreno.diccionarioapi.models.Definicion;
 import com.github.jcapitanmoreno.diccionarioapi.models.Palabra;
 import com.github.jcapitanmoreno.diccionarioapi.repositories.PalabraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,4 @@ public class PalabraService {
             throw new RecordNotFoundException("No existe Palabra para el id: ", id);
         }
     }
-
-
 }

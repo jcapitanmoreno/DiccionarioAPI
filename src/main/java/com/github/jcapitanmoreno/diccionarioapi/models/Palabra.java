@@ -1,5 +1,6 @@
 package com.github.jcapitanmoreno.diccionarioapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -8,19 +9,19 @@ import java.util.List;
 @Table(name = "Palabra")
 public class Palabra {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String termino;
 
-    private String categoria_gramatical;
+    private String categoriaGramatical;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "palabra", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Definicion> definiciones;
 
-
+    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -38,11 +39,11 @@ public class Palabra {
     }
 
     public String getCategoriaGramatical() {
-        return categoria_gramatical;
+        return categoriaGramatical;
     }
 
     public void setCategoriaGramatical(String categoriaGramatical) {
-        this.categoria_gramatical = categoriaGramatical;
+        this.categoriaGramatical = categoriaGramatical;
     }
 
     public List<Definicion> getDefiniciones() {
@@ -52,6 +53,4 @@ public class Palabra {
     public void setDefiniciones(List<Definicion> definiciones) {
         this.definiciones = definiciones;
     }
-
-
 }
