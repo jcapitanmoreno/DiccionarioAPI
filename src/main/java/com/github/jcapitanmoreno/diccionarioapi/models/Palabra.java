@@ -1,9 +1,11 @@
 package com.github.jcapitanmoreno.diccionarioapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
+
 
 @Entity
 @Table(name = "Palabra")
@@ -17,7 +19,7 @@ public class Palabra {
 
     private String categoriaGramatical;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "palabra", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Definicion> definiciones;
 

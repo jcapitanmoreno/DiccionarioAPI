@@ -1,6 +1,9 @@
 package com.github.jcapitanmoreno.diccionarioapi.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "Definicion")
@@ -16,6 +19,7 @@ public class Definicion {
 
     private String ejemplo;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "palabra_id", nullable = false)
     private Palabra palabra;
