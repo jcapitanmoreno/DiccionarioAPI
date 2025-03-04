@@ -41,9 +41,21 @@ public class PalabraController {
     }
 
     @CrossOrigin
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/definiciones")
     public ResponseEntity<Palabra> getPalabraById(@PathVariable Long id) throws RecordNotFoundException {
         Palabra palabra = palabraService.getPalabraById(id);
+        return new ResponseEntity<Palabra>(palabra, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/{id}")
+    public ResponseEntity<Palabra> getPalabraPorIdSinDefiniciones(@PathVariable Long id) throws RecordNotFoundException { //con la anotación @PathVariable le estoy diciendo que este argumento es el dato que va a poner cliente en la ruta (id)
+        Palabra palabra = palabraService.getPalabraById(id);
+        if (palabra == null) {
+            throw new RecordNotFoundException("No se ha encontrado la palabra",id);
+        }
+        palabra.setDefiniciones(null);
+
         return new ResponseEntity<Palabra>(palabra, new HttpHeaders(), HttpStatus.OK);
     }
 
