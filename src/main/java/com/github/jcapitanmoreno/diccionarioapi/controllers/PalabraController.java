@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/palabra")
@@ -23,7 +24,20 @@ public class PalabraController {
     @GetMapping
     public ResponseEntity<List<Palabra>> getAllPalabras() {
         List<Palabra> palabras = palabraService.getAllPalabras();
-        return new ResponseEntity<List<Palabra>>(palabras, new  HttpHeaders(), HttpStatus.OK);
+        List<Palabra> palabrasSinDefiniciones = palabras.stream()
+                .map(palabra -> {
+                    palabra.setDefiniciones(null);
+                    return palabra;
+                })
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(palabrasSinDefiniciones, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/definiciones")
+    public ResponseEntity<List<Palabra>> getAllPalabrasWithDefiniciones() {
+        List<Palabra> palabras = palabraService.getAllPalabras();
+        return new ResponseEntity<>(palabras, new HttpHeaders(), HttpStatus.OK);
     }
 
     @CrossOrigin
@@ -52,6 +66,27 @@ public class PalabraController {
     public HttpStatus deletePalabraById(@PathVariable Long id) throws RecordNotFoundException {
         palabraService.deletePalabra(id);
         return HttpStatus.ACCEPTED;
+    }
+
+    @CrossOrigin
+    @PostMapping("/condefiniciones")
+    public ResponseEntity<Palabra> createPalabraWithDefiniciones(@RequestBody Palabra palabra) {
+        Palabra createdPalabra = palabraService.createPalabraWithDefiniciones(palabra);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdPalabra);
+    }
+
+    @CrossOrigin
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<Palabra>> getPalabrasByCategoria(@PathVariable String categoria) {
+        List<Palabra> palabras = palabraService.getPalabrasByCategoria(categoria);
+        return new ResponseEntity<>(palabras, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/inicial/{letra}")
+    public ResponseEntity<List<Palabra>> getPalabrasByInicial(@PathVariable String letra) {
+        List<Palabra> palabras = palabraService.getPalabrasByInicial(letra);
+        return new ResponseEntity<>(palabras, new HttpHeaders(), HttpStatus.OK);
     }
 
 }

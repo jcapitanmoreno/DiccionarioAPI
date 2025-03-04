@@ -74,4 +74,17 @@ public class PalabraService {
             throw new RecordNotFoundException("No existe Palabra para el id: ", id);
         }
     }
+    public Palabra createPalabraWithDefiniciones(Palabra palabra) {
+        for (Definicion definicion : palabra.getDefiniciones()) {
+            definicion.setPalabra(palabra);
+        }
+        return palabraRepository.save(palabra);
+    }
+
+    public List<Palabra> getPalabrasByCategoria(String categoria) {
+        return palabraRepository.findByCategoriaGramatical(categoria);
+    }
+    public List<Palabra> getPalabrasByInicial(String letra) {
+        return palabraRepository.findByTerminoStartingWith(letra);
+    }
 }
