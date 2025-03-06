@@ -15,39 +15,52 @@ import java.util.Optional;
 public class PalabraService {
 
     @Autowired
-    private  PalabraRepository palabraRepository;
+    private PalabraRepository palabraRepository;
 
-
-
+    /**
+     * Obtiene todas las palabras.
+     * @return una lista de todas las palabras.
+     */
     public List<Palabra> getAllPalabras() {
-
         List<Palabra> palabras = palabraRepository.findAll();
-
         if (!palabras.isEmpty()) {
             return palabras;
         } else {
-            return new  ArrayList<Palabra>();
+            return new ArrayList<Palabra>();
         }
-
     }
 
+    /**
+     * Obtiene una palabra por su ID.
+     * @param id el ID de la palabra.
+     * @return la palabra correspondiente al ID.
+     * @throws RecordNotFoundException si no se encuentra la palabra.
+     */
     public Palabra getPalabraById(Long id) throws RecordNotFoundException {
-
         Optional<Palabra> palabra = palabraRepository.findById(id);
-
-
         if (palabra.isPresent()) {
             return palabra.get();
         } else {
-            throw  new RecordNotFoundException("No existe Pelicula para el id ",id);
+            throw new RecordNotFoundException("No existe Palabra para el id ", id);
         }
     }
 
+    /**
+     * Crea una nueva palabra.
+     * @param palabra la palabra a crear.
+     * @return la palabra creada.
+     */
     public Palabra createPalabra(Palabra palabra) {
         palabra = palabraRepository.save(palabra);
         return palabra;
     }
 
+    /**
+     * Actualiza una palabra existente.
+     * @param palabra la palabra a actualizar.
+     * @return la palabra actualizada.
+     * @throws RecordNotFoundException si no se encuentra la palabra.
+     */
     public Palabra updatePalabra(Palabra palabra) throws RecordNotFoundException {
         if (palabra.getId() != null) {
             Optional<Palabra> palabraOptional = palabraRepository.findById(palabra.getId());
@@ -62,10 +75,15 @@ public class PalabraService {
                 throw new RecordNotFoundException("No existe Palabra para el id: ", palabra.getId());
             }
         } else {
-            throw new RecordNotFoundException("No hay id en la palabra a actualizar ", 0l);
+            throw new RecordNotFoundException("No hay id en la palabra a actualizar ", 0L);
         }
     }
 
+    /**
+     * Elimina una palabra por su ID.
+     * @param id el ID de la palabra a eliminar.
+     * @throws RecordNotFoundException si no se encuentra la palabra.
+     */
     public void deletePalabra(Long id) throws RecordNotFoundException {
         Optional<Palabra> palabraOptional = palabraRepository.findById(id);
         if (palabraOptional.isPresent()) {
@@ -74,6 +92,12 @@ public class PalabraService {
             throw new RecordNotFoundException("No existe Palabra para el id: ", id);
         }
     }
+
+    /**
+     * Crea una nueva palabra junto con sus definiciones.
+     * @param palabra la palabra a crear.
+     * @return la palabra creada.
+     */
     public Palabra createPalabraWithDefiniciones(Palabra palabra) {
         for (Definicion definicion : palabra.getDefiniciones()) {
             definicion.setPalabra(palabra);
@@ -81,9 +105,20 @@ public class PalabraService {
         return palabraRepository.save(palabra);
     }
 
+    /**
+     * Obtiene una lista de palabras por categoría gramatical.
+     * @param categoria la categoría gramatical.
+     * @return una lista de palabras que pertenecen a la categoría gramatical.
+     */
     public List<Palabra> getPalabrasByCategoria(String categoria) {
         return palabraRepository.findByCategoriaGramatical(categoria);
     }
+
+    /**
+     * Obtiene una lista de palabras por inicial.
+     * @param letra la letra inicial.
+     * @return una lista de palabras que comienzan con la letra especificada.
+     */
     public List<Palabra> getPalabrasByInicial(String letra) {
         return palabraRepository.findByTerminoStartingWith(letra);
     }
