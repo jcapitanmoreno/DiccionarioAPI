@@ -23,7 +23,7 @@ public class Palabra {
     @OneToMany(mappedBy = "palabra", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Definicion> definiciones;
 
-    // Getters y setters
+
     public Long getId() {
         return id;
     }
