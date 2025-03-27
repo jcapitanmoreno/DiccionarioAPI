@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.github.jcapitanmoreno.diccionarioapi.DiccionarioApiApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.925 s -- in com.github.jcapitanmoreno.diccionarioapi.DiccionarioApiApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.717 s -- in com.github.jcapitanmoreno.diccionarioapi.DiccionarioApiApplicationTests

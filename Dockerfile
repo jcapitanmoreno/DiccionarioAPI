@@ -1,4 +1,4 @@
-FROM openjdk:17-amazon-corretto-alpine-jdk
+FROM openjdk:21-ea-1-jdk
 
 COPY target/DiccionarioAPI-0.0.1-SNAPSHOT.jar app.jar
 
