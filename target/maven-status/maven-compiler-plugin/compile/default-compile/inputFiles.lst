@@ -1,0 +1,11 @@
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\configs\OpenApiConfig.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\controllers\DefinicionController.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\controllers\PalabraController.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\DiccionarioApiApplication.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\exceptions\RecordNotFoundException.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\models\Definicion.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\models\Palabra.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\repositories\DefinicionRepository.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\repositories\PalabraRepository.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\services\DefinicionService.java
+C:\Users\PC\IdeaProjects\DiccionarioAPI\src\main\java\com\github\jcapitanmoreno\diccionarioapi\services\PalabraService.java

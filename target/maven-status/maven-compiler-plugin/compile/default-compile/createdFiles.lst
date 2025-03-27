@@ -1,0 +1,11 @@
+com\github\jcapitanmoreno\diccionarioapi\services\DefinicionService.class
+com\github\jcapitanmoreno\diccionarioapi\DiccionarioApiApplication.class
+com\github\jcapitanmoreno\diccionarioapi\repositories\DefinicionRepository.class
+com\github\jcapitanmoreno\diccionarioapi\controllers\DefinicionController.class
+com\github\jcapitanmoreno\diccionarioapi\services\PalabraService.class
+com\github\jcapitanmoreno\diccionarioapi\controllers\PalabraController.class
+com\github\jcapitanmoreno\diccionarioapi\configs\OpenApiConfig.class
+com\github\jcapitanmoreno\diccionarioapi\exceptions\RecordNotFoundException.class
+com\github\jcapitanmoreno\diccionarioapi\repositories\PalabraRepository.class
+com\github\jcapitanmoreno\diccionarioapi\models\Definicion.class
+com\github\jcapitanmoreno\diccionarioapi\models\Palabra.class
