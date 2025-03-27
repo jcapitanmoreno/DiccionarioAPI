@@ -17,12 +17,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+
 @RequestMapping("/palabra")
 public class PalabraController {
+
 
     @Autowired
     private PalabraService palabraService;
 
+    @RequestMapping("/hola")
+    public String hola() {
+        return "Hola desde el controlador de palabras";
+    }
     @CrossOrigin
     @Operation(
             summary = "Obtener todas las palabras",
@@ -47,6 +53,8 @@ public class PalabraController {
                 .collect(Collectors.toList());
         return new ResponseEntity<>(palabrasSinDefiniciones, new HttpHeaders(), HttpStatus.OK);
     }
+
+
 
     @CrossOrigin
     @Operation(
