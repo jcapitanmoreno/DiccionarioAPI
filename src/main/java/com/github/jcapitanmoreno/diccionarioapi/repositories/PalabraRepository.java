@@ -2,9 +2,11 @@ package com.github.jcapitanmoreno.diccionarioapi.repositories;
 
 import com.github.jcapitanmoreno.diccionarioapi.models.Palabra;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PalabraRepository extends JpaRepository<Palabra, Long> {
 
     /**
